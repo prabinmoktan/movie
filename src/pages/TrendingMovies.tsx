@@ -18,22 +18,28 @@ const TrendingMovies = () => {
 
   return (
     <>
-      {/* <Stack direction={"column"} spacing={4}> */}
+    <Box  sx={{backgroundColor:"#100F10",  color: "#9DB2BF", marginTop:"20px"}}>
+
+   
+      
         <Box>
         <Typography variant="h2">Trending Movies</Typography>
         </Box>
-        <Stack flexDirection={"row"} sx={{flexWrap:"wrap", justifyContent:"space-between"}} >
+        <Stack flexDirection={"row"} sx={{flexWrap:"wrap", justifyContent:"space-between", marginBottom:"3em"}} >
         {
             trendingMovies && 
             trendingMovies.map((movie: any) => {
             return (
+              
                 <MovieCard key={movie.id} movie={movie}/>
+              
             )
            })
         }
         </Stack>
+        </Box>
         
-      {/* </Stack> */}
+      
     </>
   );
 };
