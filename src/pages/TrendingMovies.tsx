@@ -9,32 +9,50 @@ const TrendingMovies = () => {
 
   const moviesData = async () => {
     const response = await moviesTrending();
-    console.log(response.results);
+    
     setTrendingMovies(response.results);
   };
   useEffect(() => {
     moviesData();
   }, []);
 
+//   const scrollHandle = () => {
+//     try{
+//  if(window.innerHeight+ document.documentElement.scrollTop >= document. documentElement.scrollHeight)    }
+//     catch(err){
+//       console.log(err)
+//     }
+//     }
+//   }
+
+  // useEffect(()=> {
+  //   window.addEventListener('scroll', scrollHandle);
+  // },[])
+
+
   return (
     <>
-    <Box  sx={{backgroundColor:"#100F10",  color: "#9DB2BF", marginTop:"20px"}}>
+    <Box  sx={{backgroundColor:"#100F10",  color: "#9DB2BF", paddingBottom:"10px"}}>
 
    
       
         <Box>
-        <Typography variant="h2">Trending Movies</Typography>
+        <Typography variant="h2" textAlign={"center"}>Trending Movies</Typography>
         </Box>
         <Stack flexDirection={"row"} sx={{flexWrap:"wrap", justifyContent:"space-between", marginBottom:"3em"}} >
         {
             trendingMovies && 
-            trendingMovies.map((movie: any) => {
-            return (
+            
               
-                <MovieCard key={movie.id} movie={movie}/>
+                trendingMovies?.map((movie :movieCardInterface) => {
+                  return(
+                    <MovieCard key={movie.id} movie={movie}/>
+                  )
+                })
+                
               
-            )
-           })
+            
+            
         }
         </Stack>
         </Box>
@@ -45,3 +63,6 @@ const TrendingMovies = () => {
 };
 
 export default TrendingMovies;
+
+
+

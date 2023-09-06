@@ -12,7 +12,7 @@ import CopyrightIcon from '@mui/icons-material/Copyright';
 const Footer = () => {
   return (
     <>
-    <Paper sx={{backgroundColor:"#8739F9"}}>
+    <Paper sx={{backgroundColor:"#8739F9", position:"sticky"}}>
         <Container sx={{ display:"flex", justifyContent:"space-between", color:"white", padding:"3px"}}>
     <Typography>Get connected with us here on social medias</Typography>
     <Box  padding={"3px"} sx={{gap:"4"}}>
@@ -24,19 +24,19 @@ const Footer = () => {
     </Box>
     </Container>
     </Paper>
-    <Stack direction="row" spacing={8} justifyContent={"space-evenly"} sx={{backgroundColor:"#100F10",mb:"10px",paddingBottom:"10px" , padding:"10px", paddingTop:"30px", color:"white"}}>
-        <Grid xs={6} sm={6} md={3} lg={3}>
+    <Stack direction="row" spacing={8} justifyContent={"space-evenly"} sx={{backgroundColor:"#100F10",paddingBottom:"10px" , padding:"10px", paddingTop:"30px", color:"white"}}>
+        <Grid item xs={6} sm={6}  >
             <Typography variant='h5' sx={{textDecoration:"underline" , textDecorationColor:"#8739F9"}} textAlign={"center"} >Movie</Typography>
             <Typography variant='body2' sx={{py:"10px"}}> Here you can check all the details of the movies</Typography>
         </Grid>
-        <Grid xs={6} sm={6} md={3} alignContent={"center"} lg={3} >
+        <Grid item xs={6} sm={6} alignContent={"center"}  >
             <Typography variant='h6' textAlign={"center"} sx={{textDecoration:"underline" , textDecorationColor:"#8739F9"}}>Genres</Typography>
             <Typography variant='body2' sx={{ py:"10px"}}>Horror</Typography>
             <Typography variant='body2' sx={{ py:"10px"}}>Action</Typography>
             <Typography variant='body2' sx={{ py:"10px"}}>Romantic</Typography>
             <Typography variant='body2' sx={{ py:"10px"}}>Adventure</Typography>
         </Grid>
-        <Grid xs={6} sm={6} md={3} lg={3}>
+        <Grid item xs={6} sm={6}  >
         <Typography variant='h6' textAlign={"center"} sx={{textDecoration:"underline" , textDecorationColor:"#8739F9"}}>Useful Links</Typography>
         <Typography variant='body2' sx={{ py:"10px"}}>Your Account</Typography>
         <Typography variant='body2' sx={{ py:"10px"}}>Become an affiliate</Typography>
@@ -44,7 +44,7 @@ const Footer = () => {
 
         </Grid>
 
-        <Grid xs={6} sm={6} md={3} lg={3} >
+        <Grid  item xs={6} sm={6}   >
         <Typography variant='h6' sx={{textDecoration:"underline" , textDecorationColor:"#8739F9"}} textAlign={"center"}>Contact</Typography>
         <Typography variant='body2' sx={{display:"flex",py:"10px"}} ><HomeIcon/> Bhaktapur, Nepal</Typography>
         <Typography variant='body2' sx={{display:"flex",py:"10px"}}><PhoneIcon/> +9770123456</Typography>
@@ -57,7 +57,7 @@ const Footer = () => {
     </Stack>
     <Box width={"100%"} sx={{backgroundColor:"#8739F9", display:"flex", justifyContent:"center", py:"10px", color:"white"}}  >
     <CopyrightIcon/>
-    <Typography> 2023.Copyright</Typography>
+    <Typography fontSize={"15px"}> 2023.Copyright</Typography>
     </Box>
     
     </>

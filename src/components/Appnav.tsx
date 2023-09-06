@@ -10,12 +10,15 @@ import "../assets/1.jpg";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 
 export default function ButtonAppBar() {
+
+
+  
   return (
     <>
       <Box>
         <AppBar sx={{ backgroundColor:"rgba(0, 0, 0, 0.5)", flexGrow: "1" }}>
           <Toolbar sx={{display:"flex", justifyContent:"space-between"}}>
-            <IconButton size="large">
+            <IconButton size="large" href="/">
               <LiveTvIcon sx={{ color: "white" }} />
               <Typography variant="h4" color={"white"}>Movie</Typography>
             </IconButton>
@@ -26,11 +29,11 @@ export default function ButtonAppBar() {
             <Link href="/trendingMovies"  underline="hover" sx={{ color: "white" }}  >
                 Trending Movies
               </Link>
-              <Link underline="none" sx={{ color: "white" }}>
+              <Link href='/topRated' underline="none" sx={{ color: "white" }}>
                 Top IMDB
               </Link>
-              <Link underline="none" sx={{ color: "white" }}>
-                TV series
+              <Link href='/tvshows' underline="none" sx={{ color: "white" }}>
+                Tv shows
               </Link>
             </Stack>
           </Toolbar>

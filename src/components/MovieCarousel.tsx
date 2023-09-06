@@ -9,7 +9,7 @@ const MovieCarousel = () => {
 
     const moviesData = async () => {
         const response = await moviesTrending();
-        console.log(response.results);
+      
         setCarousel(response.results);
       };
       useEffect(() => {

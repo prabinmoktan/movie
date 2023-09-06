@@ -11,7 +11,7 @@ const MovieDetailPage = () => {
 
   const movieData = async (id: number) => {
     const response = await movieDetail(id);
-    console.log(response);
+    
     setMovie(response);
   };
   useEffect(() => {
@@ -20,9 +20,7 @@ const MovieDetailPage = () => {
   return (
     <>
       <Box sx={{ backgroundColor: "#100F10", color: "#9DB2BF" }}>
-        <Typography variant="h4" sx={{ color: "#C651CD" }}>
-          {movie.title}
-        </Typography>
+        
         <Container sx={{ width: "80%" }}>
           <Grid
             sm={6}

@@ -13,11 +13,11 @@ const Home = () => {
    <Box sx={{backgroundColor:"#100F10"}}>
 
    
-   <Appnav/>
+   
    <MovieCarousel/>
    <PopularMovies/>
    <TrendingMovies/>
-   <Footer/>
+   
    </Box>
    </>
   )
