@@ -22,7 +22,7 @@ const MovieDetailPage = () => {
       <Box sx={{ backgroundColor: "#100F10", color: "#9DB2BF" }}>
         
         <Container sx={{ width: "80%" }}>
-          <Grid
+          <Grid item
             sm={6}
             md={12}
             sx={{
@@ -44,6 +44,7 @@ const MovieDetailPage = () => {
         
         <Grid container spacing={2} marginTop={"2em"}>
           <Grid
+          item
             xs={12}
             
             md={2}
@@ -55,7 +56,7 @@ const MovieDetailPage = () => {
               width={"150px"}
             />
           </Grid>
-          <Grid xs={12} marginLeft={"50px"} md={8}>
+          <Grid item xs={12} marginLeft={"50px"} md={8}>
             <Typography variant="h4">{movie.title}</Typography>
             <Typography variant="body2">{movie.tagline}</Typography>
             <Typography variant="body2" fontStyle={"italic"}>

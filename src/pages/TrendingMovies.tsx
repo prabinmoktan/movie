@@ -1,5 +1,5 @@
 import { moviesTrending } from "../services/axios.service";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Typography, Stack , Box } from "@mui/material";
 import MovieCard from "../components/MovieCard";
 import { movieCardInterface } from "../interface/global.interafce";
@@ -12,22 +12,11 @@ const TrendingMovies = () => {
     
     setTrendingMovies(response.results);
   };
+
+  
   useEffect(() => {
     moviesData();
   }, []);
-
-//   const scrollHandle = () => {
-//     try{
-//  if(window.innerHeight+ document.documentElement.scrollTop >= document. documentElement.scrollHeight)    }
-//     catch(err){
-//       console.log(err)
-//     }
-//     }
-//   }
-
-  // useEffect(()=> {
-  //   window.addEventListener('scroll', scrollHandle);
-  // },[])
 
 
   return (
@@ -43,12 +32,26 @@ const TrendingMovies = () => {
         {
             trendingMovies && 
             
+            // if(location.pathname == '/'){
+            //   trendingMovies?.slice(0,10).map((movie :movieCardInterface) => {
+            //     return(
+            //       <MovieCard key={movie.id} movie={movie}/>
+            //     )
+            //   })
+            // }
+            // else{
+              trendingMovies?.map((movie :movieCardInterface, id) => {
+                return(
+                  <React.Fragment key={id}>
+
+                 
+                  <MovieCard  movie={movie}/>
+                  </React.Fragment>
+                )
+              })
+            // }
               
-                trendingMovies?.map((movie :movieCardInterface) => {
-                  return(
-                    <MovieCard key={movie.id} movie={movie}/>
-                  )
-                })
+                
                 
               
             

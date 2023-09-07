@@ -18,7 +18,7 @@ const MovieCarousel = () => {
   return (
    <>
    <Box >
-   <Carousel  height={"500px"} fullHeightHover={false}>
+   <Carousel  height={"500px"} fullHeightHover={false} >
     {
         carousel &&
         carousel.slice(5, 10).map((data: movieCardInterface)=> {

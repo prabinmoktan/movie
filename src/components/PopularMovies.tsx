@@ -1,56 +1,105 @@
-import  { useEffect, useState } from 'react'
-import { popularMovies } from '../services/axios.service';
-import { Stack, Box, Typography, Paper } from '@mui/material'
-import { popularMovieInterface } from '../interface/global.interafce';
-import Carousel from "react-material-ui-carousel"
+import { useEffect, useState } from "react";
+import { popularMovies } from "../services/axios.service";
+import { Stack, Box, Typography, Paper } from "@mui/material";
+import {
+  movieCardInterface,
+  popularMovieInterface,
+} from "../interface/global.interafce";
+import Carousel from "react-material-ui-carousel";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 
 const PopularMovies = () => {
-    const [popular, setPopular ] = useState([]);    
+  const [popular, setPopular] = useState([]);
 
-    const getPopularMovies = async () => {
-        const response = await popularMovies();
-        
-        setPopular (response.results)
-    }
+  function Arrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "black" }}
+        onClick={onClick}
+      />
+    );
+  }
 
-    useEffect(() => {
-        getPopularMovies();
-    }, [])
-
+  var setting = {
+    dots: true,
+    infinite: true,
+    speed: 2000,
+    slidesToShow: 5,
+    slidesToScroll: 4,
+    nextArrow: <Arrow />,
+    prevArrow: <Arrow />,
+    initialSlide: 0,
     
-  return (
-    <>
-    <Typography variant='h4' sx={{color:"#8739F9", marginTop:"70px", textAlign:"center"}}>Popular Actors</Typography>
-    <Stack direction={'row'} spacing={6}  sx={{backgroundColor:"#100F10", justifyContent:"center"}} >
-    <Carousel sx={{width:"100%"}} indicators={false} >
-        {
-            popular && 
-            popular?.map((movie: popularMovieInterface) => {
-                return (
-                    
-                    <Paper  sx={{backgroundColor:"#8739F9"}}>
-                        <Box sx={{width:"13em", height:"18em", padding:"0"}}>
-                            <img src={'https://image.tmdb.org/t/p/original'+movie.profile_path} alt="movie details" width={"100%"} height={"100%"} />
-                            <Box sx={{
-                                 width:"100%"
-                            }}>
-                            <Typography sx={{ color:"white", textAlign:"center", marginTop:"-3em"}}>{movie.name}</Typography>
-                            </Box>
-                        </Box>
-                    </Paper>
-                   
-                )
-            })
+    cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
         }
-         </Carousel>
-    </Stack>
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
+
+  const getPopularMovies = async () => {
+    const response = await popularMovies();
+
+    setPopular(response.results);
+  };
+
+  useEffect(() => {
+    getPopularMovies();
+  }, []);
+
+  return (
     
+
+    <>
+    <Box width={"90%"} margin={"auto"} >
+
+   
+           <Typography variant='h4' sx={{color:"white",marginTop:"50px",  textAlign:"center"}}>Popular Actors</Typography>
+
+      <Slider {...setting} container>
+
+        {popular &&
+          popular.map((movie: popularMovieInterface) => {
+            return( <Box key={movie.id} sx={{":hover":{
+                scale: "1.2",
+                transform: "initial",
+                transition:".5s"
+            }}}>
+                    <img src={'https://image.tmdb.org/t/p/original'+movie.profile_path} alt={movie.name} height={"300px"} />
+                    <Typography variant="h6" color={"white"} textAlign={"center"}>{movie.name}</Typography>
+            </Box>);
+          })}
+      </Slider>
+      </Box>
     </>
-  )
-    }
+  );
+};
 
-
-export default PopularMovies
-
-
-
+export default PopularMovies;

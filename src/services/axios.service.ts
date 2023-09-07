@@ -87,6 +87,25 @@ export const topRated = async(page: number) => {
   }
 }
 
+export const movie = async( id: number) => {
+
+  try{
+    const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&${id}`, {
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4NDlkZmNjMjdhZGExMzk5OWRkZmE5N2U2ZDE3NGI2NCIsInN1YiI6IjY0N2RkYWU0MTc0OTczMDExODcyMWRiNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.dc3VPpEkEkBIB3CRWjhBx7jrzNLFEEB_gjI4ieuwn9c'
+      }
+      
+    })
+    
+    return(response.data.results)
+  }
+  catch(err){
+    console.log(err)
+  }
+}
+
+
 
 
 
