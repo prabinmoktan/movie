@@ -8,7 +8,7 @@ import { movieCardInterface } from "../interface/global.interafce";
 // <{poster_path : string, title: string, tagline: string, overview : string, release_date: number, id: number}>
 
 const MovieDetailPage = () => {
-  const [movie, setMovie] = useState<movieCardInterface[]>([]);
+  const [movie, setMovie] = useState<movieCardInterface>({});
   const { id } = useParams();
 
   const movieData = async (id: any) => {
