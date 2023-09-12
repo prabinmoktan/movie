@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { popularMovies } from "../services/axios.service";
-import { Stack, Box, Typography, Paper } from "@mui/material";
+import {  Box, Typography } from "@mui/material";
 import {
-  movieCardInterface,
+ 
   popularMovieInterface,
 } from "../interface/global.interafce";
-import Carousel from "react-material-ui-carousel";
-import Slider from "react-slick";
+
+import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
@@ -28,9 +28,9 @@ const PopularMovies = () => {
   var setting = {
     dots: true,
     infinite: true,
-    speed: 2000,
+    speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     nextArrow: <Arrow />,
     prevArrow: <Arrow />,
     initialSlide: 0,
@@ -81,7 +81,7 @@ const PopularMovies = () => {
     <Box width={"90%"} margin={"auto"} >
 
    
-           <Typography variant='h4' sx={{color:"white",marginTop:"50px",  textAlign:"center"}}>Popular Actors</Typography>
+           <Typography variant='h4' sx={{color:"white",  textAlign:"center"}}>Popular Actors</Typography>
 
       <Slider {...setting} container>
 
@@ -90,7 +90,7 @@ const PopularMovies = () => {
             return( <Box key={movie.id} sx={{":hover":{
                 scale: "1.2",
                 transform: "initial",
-                transition:".5s"
+                transition:".3s"
             }}}>
                     <img src={'https://image.tmdb.org/t/p/original'+movie.profile_path} alt={movie.name} height={"300px"} />
                     <Typography variant="h6" color={"white"} textAlign={"center"}>{movie.name}</Typography>

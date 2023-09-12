@@ -18,21 +18,21 @@ const MovieCarousel = () => {
   return (
    <>
    <Box >
-   <Carousel  height={"500px"} fullHeightHover={false} >
+   <Carousel  height={"600px"} fullHeightHover={false} indicators={false}>
     {
         carousel &&
         carousel.slice(5, 10).map((data: movieCardInterface)=> {
-            return (<Paper key={data.id} elevation={1} sx={{  margin:"auto"}}>
+            return (<Paper key={data.id} >
                 <img src={'https://image.tmdb.org/t/p/original'+ data.poster_path} alt={data.title} height={"500px"} width={"100%"} />
-                <Paper sx={{width:"50%", backgroundColor:"rgba(0, 0, 0, 0.5)", textAlign:'center', zIndex:"tooltip"}}>
-                <Typography variant='h4' sx={{backgroundColor:"red",  color:"white", marginTop:"-3em"}}>{data.title}</Typography>
+                <Paper>
+                <Typography variant='h5' sx={{  color:"white", marginTop:"-2em"}}>{data.title}</Typography>
                 </Paper>
                 
             </Paper>)
         })    }
       
            
-                {/* <h2>{data.title}</h2> */}
+      
            
                 
         </Carousel>
