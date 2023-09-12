@@ -15,7 +15,7 @@ export interface movieCardInterface {
     id?: number;
     title?: string;
     tagline?: string;
-    poster_path: string;
+    poster_path?: string;
     original_title?: string;
     overview?: string;
     popularity?: number;

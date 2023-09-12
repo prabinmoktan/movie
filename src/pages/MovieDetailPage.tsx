@@ -1,15 +1,17 @@
 // import React from "react";
 import { movieDetail } from "../services/axios.service";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Box, Typography, Grid, Container } from "@mui/material";
-// import { movieCardInterface } from "../interface/global.interafce";
+import { movieCardInterface } from "../interface/global.interafce";
+
+// <{poster_path : string, title: string, tagline: string, overview : string, release_date: number, id: number}>
 
 const MovieDetailPage = () => {
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState<movieCardInterface[]>([]);
   const { id } = useParams();
 
-  const movieData = async (id: number) => {
+  const movieData = async (id: any) => {
     const response = await movieDetail(id);
     // console.log(response)
     setMovie(response);

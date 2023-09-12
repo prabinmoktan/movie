@@ -9,14 +9,15 @@ import MovieCard from '../components/MovieCard'
 
 
 const TopMovies = () => {
-    const [topMovies, setTopMovies] = useState([])
-    const [loading , setLoading] = useState(false)
-    const [page, setPage] = useState(1)
+    const [topMovies, setTopMovies] = useState<movieCardInterface[]>([])
+    const [loading , setLoading] = useState<boolean>(false)
+    const [page, setPage] = useState<number>(1)
 
     const getTopMovies = async() => {
         const response = await topRated(page);
         // setTopMovies(response)
-        setTopMovies((prev) => [ ...prev, ...response])
+        console.log(response)
+        setTopMovies((prev)=>  prev?[...prev, ...response] : [response])
      setLoading(true)
     }
 
