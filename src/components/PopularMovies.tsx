@@ -83,7 +83,7 @@ const PopularMovies = () => {
    
            <Typography variant='h4' sx={{color:"white",  textAlign:"center"}}>Popular Actors</Typography>
 
-      <Slider {...setting} container>
+      <Slider {...setting} >
 
         {popular &&
           popular.map((movie: popularMovieInterface) => {
