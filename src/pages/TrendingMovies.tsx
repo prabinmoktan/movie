@@ -28,7 +28,7 @@ const TrendingMovies = () => {
         <Box>
         <Typography variant="h2" textAlign={"center"}>Trending Movies</Typography>
         </Box>
-        <Stack flexDirection={"row"} sx={{flexWrap:"wrap", justifyContent:"space-between", marginBottom:"3em"}} >
+        <Stack flexDirection={"row"} sx={{flexWrap:"wrap", justifyContent:"space-evenly", marginBottom:"3em"}} >
         {
             trendingMovies && 
             

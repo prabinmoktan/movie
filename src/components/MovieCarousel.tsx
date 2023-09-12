@@ -23,7 +23,7 @@ const MovieCarousel = () => {
         carousel &&
         carousel.slice(5, 10).map((data: movieCardInterface)=> {
             return (<Paper key={data.id} >
-                <img src={'https://image.tmdb.org/t/p/original'+ data.poster_path} alt={data.title} height={"500px"} width={"100%"} />
+                <img src={'https://image.tmdb.org/t/p/original'+ data.poster_path} alt={data.title} height={"550px"} width={"100%"} />
                 <Paper>
                 <Typography variant='h5' sx={{  color:"white", marginTop:"-2em"}}>{data.title}</Typography>
                 </Paper>
