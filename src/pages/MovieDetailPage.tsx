@@ -6,12 +6,12 @@ import { Box, Typography, Grid, Container } from "@mui/material";
 import { movieCardInterface } from "../interface/global.interafce";
 
 const MovieDetailPage = () => {
-  const [movie, setMovie] = useState<movieCardInterface>([]);
+  const [movie, setMovie] = useState<Array<movieCardInterface>>([]);
   const { id } = useParams();
 
   const movieData = async (id: number) => {
     const response = await movieDetail(id);
-    
+    console.log(response)
     setMovie(response);
   };
   useEffect(() => {

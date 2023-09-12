@@ -7,7 +7,6 @@ import Home from './pages/Home'
 import Tvshows from './pages/Tvshows'
 
 import TopMovies from './pages/TopMovies'
-import Movie from './pages/Movie'
 
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
         <Route path='/tvshows' element={<Tvshows/>}/>
         
         <Route path='/topRated' element={<TopMovies/>} />
-        <Route path='/topMovies/:id' element={<Movie/>} />
       </Routes>
       
      

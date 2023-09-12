@@ -24,28 +24,28 @@ export interface movieCardInterface {
     backdrop_path?: string;
 }
 export interface popularMovieInterface {
-    adult: boolean;
+    adult?: boolean;
     gender: number;
-    id: number;
+    id?: number;
 
-    known_for_department: string;
-    name: string;
-    popularity: number;
-    profile_path: any;
+    known_for_department?: string;
+    name?: string;
+    popularity?: number;
+    profile_path?: any;
 }
 export interface tvshowsInterface {
-    backdrop_path: string;
-    first_air_date: number
-    genre_ids: number
-    id: number
-    name: string
-    origin_country: string
-    original_language: string
-    original_name: string
-    overview: string
+    backdrop_path?: string;
+    first_air_date?: number
+    genre_ids?: number
+    id?: number
+    name?: string
+    origin_country?: string
+    original_language?: string
+    original_name?: string
+    overview?: string
 
-    popularity: number
-    poster_path: string
-    vote_average: number
-    vote_count: number
+    popularity?: number
+    poster_path?: string
+    vote_average?: number
+    vote_count?: number
 }

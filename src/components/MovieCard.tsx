@@ -7,7 +7,7 @@ const MovieCard = ({ movie }: movieCardInterface) => {
 
   const viewDetailHandler = (id: number) => {
     navigate(`/trendingMovies/${id}`);
-    console.log(movie.id);
+    // console.log(movie.id);
   };
   return (
     <>
