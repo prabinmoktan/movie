@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import { Link, Stack } from "@mui/material";
 
-import "../assets/1.jpg";
+// import "../assets/1.jpg";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 
 export default function ButtonAppBar() {
