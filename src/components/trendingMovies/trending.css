@@ -1,0 +1,12 @@
+
+
+@media (width >= 600px){
+    .container{
+        flex: 1 1 calc(100% - 16px);
+    }
+}
+@media (width >= 450px){
+    .container{
+        flex: 1 1 calc(100% - 16px);
+    }
+}

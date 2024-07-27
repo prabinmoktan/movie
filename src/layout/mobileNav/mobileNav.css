@@ -1,0 +1,40 @@
+.header {
+  background: black;
+}
+.icons{
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+.navs{
+    display: flex;
+}
+.navs div:last-child{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+.sidebar {
+  position: absolute;
+  background: rgba(71, 70, 70, 0.621);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  /* border: 1px solid rgba(255, 255, 255, 0.3); */
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  transition: left 0.5s ease-in;
+  left: -100%;
+}
+.sidebar.open{
+  left: 0;
+}
+@media (width <= 600px ){
+  .header{
+    width: 100vw;
+    /* background: red; */
+  }
+}

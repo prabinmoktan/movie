@@ -1,5 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  color: white;
+}
+/* For WebKit-based browsers */
+::-webkit-scrollbar {
+  width: 5px; /* Adjust the width as needed */
+}
 
-*{
-    margin: 0;
-    padding: 0;
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 6px; /* Rounded corners of the thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color of the scrollbar track */
+}
+.gradient {
+  background: rgb(42, 30, 28);
+  background: radial-gradient(
+    circle,
+    rgba(42, 30, 28, 0.14058123249299714) 64%,
+    rgba(26, 20, 16, 1) 100%
+  );
+  border: 3px solid blue;
+}
+.detailcard{
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 0.12);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3.2px);
+-webkit-backdrop-filter: blur(6.2px);
 }

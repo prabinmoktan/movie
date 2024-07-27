@@ -1,9 +1,10 @@
 import axios from "axios"
 
 const apiKey = import.meta.env.VITE_API_KEY
+const baseUrl = import.meta.env.VITE_BASE_URL
 
 export const moviesTrending= async() =>{
-  const response= await axios.get(`https://api.themoviedb.org/3/trending/movie/day?language=en-US&sort_by=release_date&sort_order=desc&api_key=${apiKey}`);
+  const response= await axios.get(`${baseUrl}/trending/movie/day?language=en-US&sort_by=release_date&sort_order=desc&api_key=${apiKey}`);
   
   return (response.data)
 
@@ -15,8 +16,9 @@ export const movieDetail = async(id: number) => {
   return (response.data);
 }
  
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const searchedData = async(searchKey:any) => {
-  let query = encodeURIComponent(searchKey)
+  const query = encodeURIComponent(searchKey)
   const response = await axios.get(`https://api.themoviedb.org/3/movie?query=${query}&api_key=${apiKey}`)
   console.log(response)
   return response

@@ -1,46 +1,61 @@
-import  { useEffect, useState } from 'react'
-import { moviesTrending } from '../services/axios.service';
-import Carousel from 'react-material-ui-carousel';
-import { movieCardInterface } from '../interface/global.interafce';
-import { Paper, Typography, Box } from '@mui/material';
+import { useEffect, useState } from "react";
+import { moviesTrending } from "../services/axios.service";
+// import { movieCardInterface } from "../interface/global.interafce";
+import "../App.css";
+import { movieCardInterface } from "../interface/global.interafce";
+import Carousel from "react-material-ui-carousel";
+import { Typography } from "@mui/material";
+// import Carousel from "react-material-ui-carousel";
 
 const MovieCarousel = () => {
-    const [carousel, setCarousel] = useState([]);
+  const [carousel, setCarousel] = useState([]);
+ 
 
-    const moviesData = async () => {
-        const response = await moviesTrending();
-      
-        setCarousel(response.results);
-      };
-      useEffect(() => {
-        moviesData();
-      }, []);
+  const moviesData = async () => {
+    const response = await moviesTrending();
+    setCarousel(response.results);
+  };
+  useEffect(() => {
+    moviesData();
+  }, []);
   return (
-   <>
-   <Box >
-   <Carousel  height={"600px"} fullHeightHover={false} indicators={false}>
-    {
-        carousel &&
-        carousel.slice(5, 10).map((data: movieCardInterface)=> {
-            return (<Paper key={data.id} >
-                <img src={'https://image.tmdb.org/t/p/original'+ data.poster_path} alt={data.title} height={"550px"} width={"100%"} />
-                <Paper>
-                <Typography variant='h5' sx={{  color:"white", marginTop:"-2em"}}>{data.title}</Typography>
-                </Paper>
+    <>
+      <Carousel
+        sx={{ border: "3px solid red" }}
+        height={"100vh"}
+        fullHeightHover={false}
+        indicators={false}
+      >
+        {carousel &&
+          carousel.slice(5, 10).map((data: movieCardInterface) => {
+            return (
+              <div key={data.id} className="gradient" style={{ height:'100%'}} >
+                <img
+                  src={
+                    "https://image.tmdb.org/t/p/original" + data.backdrop_path
+                  }
+                  alt={data.title}
+                  height={"100%"}
+                  width={"100%"}
+                  style={{objectFit:'contain', border:'2px solid red'}}
+                />
                 
-            </Paper>)
-        })    }
-      
-           
-      
-           
-                
-        </Carousel>
-        </Box>
-    
-   
-   </>
-  )
-}
+                  <Typography
+                    variant="h5"
+                    color={'white'}
+                    
+                  >
+                    {data.title}
+                  </Typography>
+              
+              </div>
+            );
+          })}
+      </Carousel>
+     
+     
+    </>
+  );
+};
 
-export default MovieCarousel
+export default MovieCarousel;

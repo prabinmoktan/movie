@@ -2,8 +2,8 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom'
 
 import TrendingMovies from './pages/TrendingMovies'
-import MovieDetailPage from './pages/MovieDetailPage'
-import Home from './pages/Home'
+import MovieDetailPage from './pages/movieDetailPage/MovieDetailPage'
+import Home from './pages/Homepage/Home'
 import Tvshows from './pages/Tvshows'
 
 import TopMovies from './pages/TopMovies'

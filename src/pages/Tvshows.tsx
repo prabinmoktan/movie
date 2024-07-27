@@ -1,13 +1,13 @@
 import  { useState, useEffect } from "react";
 import { tvshows } from "../services/axios.service";
 import {
-  Box,
-  CardMedia,
-  Typography,
-  Stack 
+  
+  Stack, 
+  Grid
   
 } from "@mui/material";
 import { tvshowsInterface } from "../interface/global.interafce";
+import MovieCard from "../components/MovieCard";
 // import { useNavigate } from "react-router-dom";
 
 const Tvshows = () => {
@@ -30,47 +30,28 @@ const Tvshows = () => {
   return (
     <>
       <Stack
-        direction={"row"}
-        sx={{
+        width={'100%'}
+        sx={{background:'#100F10'}}
+       
+      >
+        <Grid container  sx={{
           justifyContent: "space-evenly",
           flexWrap: "wrap",
           backgroundColor: "#100F10",
+          maxWidth:'1280px',
+          margin:'auto',
+          gap:"2rem"
         }}
-      >
+        >
+
         {shows &&
           shows.map((show: tvshowsInterface) => {
             return (
-              // <Stack direction={'row'} >
-              <Box key={show.id} width={"15em"} height={"24em"}>
-                <CardMedia
-                  component={"img"}
-                  image={
-                    "https://image.tmdb.org/t/p/original" + show.poster_path
-                  }
-                  height={"300px"}
-                />
-                <Typography
-                  sx={{
-                    marginTop: "-3em",
-                    color: "white",
-                    textAlign: "center",
-                  }}
-                >
-                  {show.name}
-                </Typography>
-                {/* <Button
-                  variant="contained"
-                  fullWidth
-                  sx={{ backgroundColor: "cornflowerblue" }}
-                  onClick={(e:any)=>viewHandler(show.id)}
-                >
-                  viewDetails
-                </Button> */}
-              </Box>
-
-              // </Stack>
+              <MovieCard movie={show} key={show.id}/>
+              
             );
           })}
+          </Grid>
       </Stack>
     </>
   );

@@ -1,0 +1,24 @@
+.movieGrid{
+    padding-left: 10rem;
+}
+.links{
+    position: relative;
+}
+.links::after{
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: wheat;
+    transition: width 0.3s ease-in-out;
+}
+.links:hover::after{
+    width: 100%;
+}
+@media (width<= 600px){
+    .movieGrid{
+        padding-left: 2rem;
+    }
+}
