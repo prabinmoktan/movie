@@ -10,6 +10,15 @@ const movieDetailSlice = baseApiSlice.injectEndpoints({
         auth: true,
       }),
     }),
+    
+      getMovieTrailer: builder.query<movieDetailInterface, void>({
+        query: (id) => ({
+          url: `/movie/${id}/videos?language=en-US`,
+          method: "GET",
+          auth: true,
+        }),
+      }),
+    
   }),
 });
-export const { useGetMobileDetailQuery } = movieDetailSlice;
+export const { useGetMobileDetailQuery, useLazyGetMovieTrailerQuery } = movieDetailSlice;

@@ -1,26 +1,26 @@
-import * as Yup from 'yup';
+import { z } from "zod";
 
-export const registerValidationSchema = Yup.object({
-    name: Yup.string()
-        .min(6, "at least 6 words is required")
-        .max(30)
-        .required("name is required"),
+export const loginSchema = z.object({
+  email: z
+    .string()
+    .nonempty({ message: "Email is required" })
+    .email({ message: "Invalid email address" }),
+  password: z
+    .string()
+    .min(6, { message: "Password must be at least 6 characters long" }),
+});
 
-    email: Yup.string()
-        .email("must be valid email")
-
-        .required("Email is required"),
-
-    password: Yup.string()
-    .min(6, "at least 6 alphabets required").max(15),
-
-    confirmPassword : Yup.string()
-    .oneOf([Yup.ref('password')], 'passwords must match')
-
-})
-
-
-
-
-
-
+export const registerSchema = z.object({
+  email: z
+    .string()
+    .nonempty({ message: "Email is required" })
+    .email({ message: "Invalid email address" }),
+  password: z
+    .string()
+    .min(6, { message: "Password must be at least 6 characters long" }),
+    confirmPassword: z
+    .string()
+    .nonempty({ message: "Confirm password is required" })
+    .min(6, { message: "Password must be at least 6 characters long" }),
+    firstName: z.string().nonempty({message: 'Name is REquired'}).min(5,{message: 'First Name must be at least 5 alphabets'})
+});

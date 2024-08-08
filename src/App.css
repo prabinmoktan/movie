@@ -9,6 +9,11 @@
 ::-webkit-scrollbar {
   width: 5px; /* Adjust the width as needed */
 }
+@media (max-width: 480px) {
+  .next {
+    display: none !important;
+  }
+}
 
 ::-webkit-scrollbar-thumb {
   background-color: #888; /* Color of the scrollbar thumb */

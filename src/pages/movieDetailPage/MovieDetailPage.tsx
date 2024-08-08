@@ -3,16 +3,21 @@
 import { useParams } from "react-router-dom";
 import { Box, Typography, Grid, Container } from "@mui/material";
 import "./movieDetail.css";
-import { useGetMobileDetailQuery } from "./detail.api";
+import { useGetMobileDetailQuery, useLazyGetMovieTrailerQuery } from "./detail.api";
+import TitleTypography from "../../ui/TitleTypography";
+
 
 const MovieDetailPage = () => {
   const { id } = useParams();
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+ 
   // @ts-ignore
   const { data: movie, error, isLoading } = useGetMobileDetailQuery(id);
-  console.log(movie);
-  console.log(error);
-  console.log(isLoading);
+  // @ts-ignore
+  const [trigger,{data}] = useLazyGetMovieTrailerQuery(id)
+
+ 
+
+
 
   return (
     <>
@@ -24,7 +29,11 @@ const MovieDetailPage = () => {
             }) no-repeat center center`,
             backgroundSize: "cover",
             borderRadius: "10px",
-            height: "100vh",
+            height: "96vh",
+            display:'flex',
+            flexDirection:'column',
+            justifyContent:'space-between',
+            py:'1rem'
           }}
         >
           <Container sx={{ width: "80%" }}>
@@ -60,14 +69,14 @@ const MovieDetailPage = () => {
                 xs={12}
                 md={2}
                 sx={{ placeItems: "center" }}
-                className="detail-img"
+                className="detail-img"                
               >
                 <img
                   src={
                     "https://image.tmdb.org/t/p/original" + movie?.poster_path
                   }
                   alt="movie.title"
-                  width={"180px"}
+                  width={"120px"}
                   className="imagebox"
                 />
               </Grid>
@@ -80,7 +89,7 @@ const MovieDetailPage = () => {
                 justifyContent={"space-evenly"}
               >
                 <div>
-                  <Typography variant="h4">{movie?.title}</Typography>
+                  <TitleTypography title={movie?.title}/>
                   <Grid item container sx={{ display: "flex", gap: "2px" }}>
                     <Typography>Genres:</Typography>
 

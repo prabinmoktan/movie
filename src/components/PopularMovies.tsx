@@ -6,13 +6,16 @@ import { popularMovieInterface } from "../interface/global.interafce";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useMediaQuery } from "react-responsive";
 
 const PopularMovies = () => {
   const [popular, setPopular] = useState([]);
+  const isMobile = useMediaQuery({ maxWidth: "600px" });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function Arrow(props: any) {
     const { className, style, onClick } = props;
+
     return (
       <div
         className={className}
@@ -25,13 +28,13 @@ const PopularMovies = () => {
   const setting = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1500,
     slidesToShow: 5,
     slidesToScroll: 1,
-    nextArrow: <Arrow />,
+    nextArrow: <Arrow size="large" />,
     prevArrow: <Arrow />,
     initialSlide: 0,
-
+    autoplay: true,
     cssEase: "linear",
     responsive: [
       {
@@ -49,13 +52,16 @@ const PopularMovies = () => {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
+          infinite: true,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.5,
+          centerPadding: "60px",
           slidesToScroll: 1,
+          infinite: true,
         },
       },
     ],
@@ -73,7 +79,13 @@ const PopularMovies = () => {
 
   return (
     <>
-      <Box width={"80%"} margin={"auto"} paddingBottom={4}>
+      <Box
+        width={"100%"}
+        margin={"auto"}
+        paddingBottom={4}
+        maxWidth={1280}
+        overflow={isMobile ? "hidden" : ''}
+      >
         <Typography variant="h4" sx={{ color: "white", textAlign: "center" }}>
           Popular Actors
         </Typography>
@@ -85,23 +97,36 @@ const PopularMovies = () => {
                 <Box
                   key={movie.id}
                   sx={{
-                    ":hover": {
-                      scale: "1.2",
-                      transform: "initial",
-                      transition: ".3s",
-                    },
+                    px: "2rem",
+                    // width: "100%",
+                    gap: "2rem",
                   }}
                 >
-                  <img
-                    src={
-                      "https://image.tmdb.org/t/p/original" + movie.profile_path
-                    }
-                    alt={movie.name}
-                    height={"300px"}
-                  />
-                  <Typography variant="h6" color={"white"} textAlign={"center"}>
-                    {movie.name}
-                  </Typography>
+                  <Box
+                    sx={{
+                      width: "80%",
+                      display: "flex",
+                      justifyContent: "center",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <img
+                      src={
+                        "https://image.tmdb.org/t/p/original" +
+                        movie.profile_path
+                      }
+                      alt={movie.name}
+                      // height={"220px"}
+                      // width={"100%"}
+                    />
+                    <Typography
+                      variant="h6"
+                      color={"white"}
+                      textAlign={"center"}
+                    >
+                      {movie.name}
+                    </Typography>
+                  </Box>
                 </Box>
               );
             })}

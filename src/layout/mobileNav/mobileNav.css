@@ -1,6 +1,9 @@
 .header {
   background: black;
 }
+.menulist:last-child{
+  display: none;
+}
 .icons{
   display: flex;
   align-items: center;
@@ -25,6 +28,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   z-index: 1;
   transition: left 0.5s ease-in;
   left: -100%;

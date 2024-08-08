@@ -3,14 +3,12 @@ import { cardTypes } from "../../interface/global.interafce";
 import "./card.css";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-const Card: React.FC<cardTypes> = ({ onClick, image, title, details }) => {
+const Card: React.FC<cardTypes> = ({ onClick, image, title, details, className, ...rest }) => {
   return (
     <>
       <div
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        onClick={onClick}
         className="card"
+        {...rest}
       >
         <CardMedia
           component={"img"}
@@ -22,6 +20,7 @@ const Card: React.FC<cardTypes> = ({ onClick, image, title, details }) => {
           <Typography variant="body2">{details}</Typography>
           <Box sx={{ mt: 2 }}>
             <IconButton
+            onClick={onClick}
               color="inherit"
               sx={{
                 "&:hover": {

@@ -7,10 +7,17 @@ const MovieCard: React.FC<movie> = ({ movie }) => {
   const navigate = useNavigate();
 
   const viewDetailHandler = (id: number | undefined) => {
-    if (id) {
-      navigate(`/trendingMovies/${id}`);
+    {
+      movie?.media_type === "movie" && id && navigate(`/trendingMovies/${id}`);
     }
-    
+    {
+      movie?.media_type === "tv" && id && navigate(`/tvShows/${id}`);
+    }
+    {
+      !movie?.media_type &&
+        id &&
+        navigate(`/trendingMovies/${id}`);
+    }
   };
   return (
     <>
@@ -20,7 +27,7 @@ const MovieCard: React.FC<movie> = ({ movie }) => {
             ? "https://image.tmdb.org/t/p/original" + movie?.poster_path
             : ""
         }
-        title={movie?.title || ""}
+        title={movie?.title || movie?.name}
         onClick={() => viewDetailHandler(movie.id)}
       />
     </>

@@ -38,7 +38,7 @@ const baseQuery: BaseQueryFn<
     const error = axiosError as AxiosError;
 
     if (error.response?.status === 400) {
-      console.log(error.response.data);
+      console.log(error.response);
     } else if (
       error.response?.status === 401 &&
       error.response.data === 'token_not_valid'
