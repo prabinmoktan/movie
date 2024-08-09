@@ -1,6 +1,5 @@
 import axios from "axios";
-
-
+import  Cookies  from 'js-cookie';
 
 // const abortController = new AbortController();
 export const axiosInstance = axios.create({
@@ -8,7 +7,6 @@ export const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(
-    
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (config: any) => {
     if (!window.navigator.onLine) {
@@ -20,8 +18,8 @@ axiosInstance.interceptors.request.use(
     // const accessToken = Cookies.get("accessToken");
     //#ToDo only attack Bearer tokens in case of private routes
     // config.headers["Authorization"] = accessToken
-    //   ? `Bearer ${accessToken}`
-    //   : "";
+      // ? `Bearer ${accessToken}`
+      // : "";
     if (config?.data instanceof FormData) {
       config.headers["Content-Type"] = "multipart/form-data";
     } else {
@@ -43,7 +41,7 @@ axiosInstance.interceptors.response.use(
     // const errorConfig = error?.config;
 
     if (axios.isCancel(error)) {
-      console.log(`Request canceled ${error?.message}.`);
+      console.log(`Request canceled ${error}.`);
     } else if (error.message === "No Internet") {
       console.log("No internet connection available.");
     } else if (error.toJSON().message === "Network Error") {
