@@ -11,10 +11,15 @@ import { successToast } from "../../services/Toastify.service";
 // import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { loginSuccess, userLoggedIn } from "../redux/auth.slice";
+import { isUserLoggedIn } from "../../utils/cookies";
+import { useState } from "react";
 
 const Login = () => {
+  const [isUser, setIsUser] = useState(false)
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const loggedIn = isUserLoggedIn();
+  console.log(loggedIn, 'logged in from cookie value')
   const {
     handleSubmit,
     control,
@@ -32,6 +37,8 @@ const Login = () => {
             // @ts-ignore
             dispatch(loginSuccess({ accessToken: response.user.accessToken, displayName: response.user.displayName })); // Fixed the typo here
             dispatch(userLoggedIn());
+            setIsUser(loggedIn);
+
             successToast('Logged in Successfully');
             navigate('/');
         }

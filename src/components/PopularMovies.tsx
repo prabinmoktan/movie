@@ -8,33 +8,43 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useMediaQuery } from "react-responsive";
 
+import { GrPrevious } from "react-icons/gr";
+import { GrNext } from "react-icons/gr";
+
 const PopularMovies = () => {
   const [popular, setPopular] = useState([]);
   const isMobile = useMediaQuery({ maxWidth: "600px" });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function Arrow(props: any) {
+  const CustomNext = (props: any) => {
     const { className, style, onClick } = props;
 
     return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "black" }}
-        onClick={onClick}
-      />
+      <div className={className} style={{ ...style }} onClick={onClick}>
+        <GrNext />
+      </div>
     );
-  }
+  };
+  const CustomPrev = (props: any) => {
+    const { className, style, onClick } = props;
+
+    return (
+      <div className={className} style={{ ...style }} onClick={onClick}>
+        <GrPrevious />
+      </div>
+    );
+  };
 
   const setting = {
     dots: true,
     infinite: true,
-    speed: 1500,
+    speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
-    nextArrow: <Arrow size="large" />,
-    prevArrow: <Arrow />,
+    nextArrow: <CustomNext />,
+    prevArrow: <CustomPrev />,
     initialSlide: 0,
-    autoplay: true,
+    // autoplay: true,
     cssEase: "linear",
     responsive: [
       {
@@ -62,6 +72,7 @@ const PopularMovies = () => {
           centerPadding: "60px",
           slidesToScroll: 1,
           infinite: true,
+          autoplay: true,
         },
       },
     ],
@@ -84,7 +95,7 @@ const PopularMovies = () => {
         margin={"auto"}
         paddingBottom={4}
         maxWidth={1280}
-        overflow={isMobile ? "hidden" : ''}
+        overflow={isMobile ? "hidden" : ""}
       >
         <Typography variant="h4" sx={{ color: "white", textAlign: "center" }}>
           Popular Actors

@@ -15,11 +15,7 @@ axiosInstance.interceptors.request.use(
     if (!config.headers) {
       config.headers = {};
     }
-    // const accessToken = Cookies.get("accessToken");
-    //#ToDo only attack Bearer tokens in case of private routes
-    // config.headers["Authorization"] = accessToken
-      // ? `Bearer ${accessToken}`
-      // : "";
+
     if (config?.data instanceof FormData) {
       config.headers["Content-Type"] = "multipart/form-data";
     } else {
@@ -34,7 +30,6 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   (response) => {
-    console.log(response?.data?.message);
     return response;
   },
   async (error) => {

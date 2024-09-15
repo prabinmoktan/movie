@@ -23,6 +23,8 @@ import { userLoggedOut } from "../../auth/redux/auth.slice";
 import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { FaAngleUp } from "react-icons/fa";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 
 export default function AppNav() {
   const mobileView = useMediaQuery({ maxWidth: 600 });
@@ -30,9 +32,15 @@ export default function AppNav() {
   const [isClicked, setIsClicked] = useState(false);
   const dispatch = useDispatch();
 
-  const handleMenu = (menu: { name: string }) => {
+  const handleMenu = async(menu: { name: string }) => {
     if (menu.name === "Logout") {
-      dispatch(userLoggedOut());
+      try {
+        dispatch(userLoggedOut());
+        await signOut(auth);
+        
+      } catch (error) {
+        console.log("Sign out error:", error);
+      }
     }
   };
 

@@ -21,7 +21,7 @@ const combinedReducers = combineReducers({
 });
 const persistConfig = {
   key: "root",
-  whitelist: ["auth"],
+  // whitelist: ["auth"],
   storage,
 };
 

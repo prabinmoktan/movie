@@ -1,18 +1,16 @@
 import { movieCardInterface } from "../../interface/global.interafce";
-import { Grid, Pagination, Skeleton, Stack } from "@mui/material";
+import { Box, Grid, Pagination, Skeleton} from "@mui/material";
 import MovieCard from "../MovieCard";
 import { useTrendingQuery } from "./redux/trending.api";
 
 import "./trending.css";
 import { useState } from "react";
 
-
 const Trending = ({ limit }: any) => {
   const [page, setPage] = useState(1);
 
   const { data, isLoading } = useTrendingQuery({ page });
   const trendingData = data?.results;
-  
 
   const displayMovies = limit ? trendingData?.slice(0, limit) : trendingData;
   const skel = limit || 20;
@@ -30,10 +28,10 @@ const Trending = ({ limit }: any) => {
         flexWrap={"wrap"}
         py={4}
         columnGap={3}
-        rowGap={4}
+        rowGap={5}
         maxWidth={"1280px"}
-        margin={"auto"}
-       justifyContent={'center'}
+        px={3}
+        alignItems={"center"}
       >
         {isLoading
           ? Array.from({ length: skel }).map((_, index) => (
@@ -48,21 +46,27 @@ const Trending = ({ limit }: any) => {
           : displayMovies?.map((movie: movieCardInterface) => (
               <MovieCard movie={movie} key={movie.id} />
             ))}
-       
       </Grid>
       {!limit && (
-          <Stack spacing={2} bgcolor={"red"}>
-            <Pagination
-              count={10}
-              shape="rounded"
-              color="primary"
-              sx={{ color: "whitesmoke" }}
-              defaultPage={1}
-              onChange={handleChange}
-              page={page}
-            />
-          </Stack>
-        )}
+        <Box  width={'100%'} display={'flex'} justifyContent={'center'} >
+          <Pagination
+            count={10 }
+            shape="rounded"
+            color="primary"
+            size="small"
+            sx={{
+              '& .MuiPaginationItem-root': {
+                color: 'white',
+              },
+             
+            }}
+            defaultPage={1}
+            onChange={handleChange}
+            page={page}
+            variant="text"
+          />
+        </Box>
+      )}
     </>
   );
 };

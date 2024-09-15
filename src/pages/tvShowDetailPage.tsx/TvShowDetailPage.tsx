@@ -35,16 +35,12 @@ const TvShowDetailPage = () => {
     // @ts-ignore
     trigger(id);
   };
-
-  const handleChange = (e: any, value: any | null) => {
-    e.prevent.default;
-    if (value) {
-      const select = showVideo?.results.find(
-        (video: Video) => video.key === value
-      );
-      
-      setSelectedVideo(select);
-    }
+// @ts-ignore
+  const handleChange = ( e: any,value: any | null) => {
+    const select = showVideo?.results.find(
+      (video: Video) => video.name === value
+    );
+    setSelectedVideo(select);
   };
 
   return (
@@ -134,7 +130,7 @@ const TvShowDetailPage = () => {
                       display={"flex"}
                       justifyContent={"space-between"}
                       mb={1}
-                      height={'100%'}
+                      // height={'100%'}
                     >
                       <Typography
                         variant="caption"
@@ -143,8 +139,8 @@ const TvShowDetailPage = () => {
                           borderRadius: "5px",
                           px: "0.5rem",
                           py: "0.2rem",
+                          height: "100%",
                         }}
-                        
                       >
                         Watch Trailer
                       </Typography>
@@ -171,7 +167,7 @@ const TvShowDetailPage = () => {
                             background: "grey",
                             borderRadius: "5px",
                             px: "0.5rem",
-                            py: "0.2rem"
+                            py: "0.2rem",
                           }}
                           variant="caption"
                         >

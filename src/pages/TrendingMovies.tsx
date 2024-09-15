@@ -11,7 +11,7 @@ const TrendingMovies = () => {
           color: "#9DB2BF",
         }}
       >
-        <Grid container sx={{ maxWidth: "1280px", margin: "auto" }}>
+        <Grid container sx={{ maxWidth: "1280px", margin: "auto", py:'2rem',pt:'4rem' }}>
           <Box width={"100%"}>
             <TitleTypography title="Trending Movies" />
           </Box>
